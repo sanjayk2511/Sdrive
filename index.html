@@ -375,23 +375,29 @@ function saveData(e){
 
 e.preventDefault();
 
-let name=document.getElementById("name").value;
+let data={
 
-let phone=document.getElementById("phone").value;
+name:document.getElementById("name").value,
 
-let city=document.getElementById("city").value;
+phone:document.getElementById("phone").value,
 
-let type=document.getElementById("type").value;
+city:document.getElementById("city").value,
 
-let data={name,phone,city,type};
+type:document.getElementById("type").value
 
-let stored=JSON.parse(localStorage.getItem("drivers")||"[]");
+};
 
-stored.push(data);
+fetch("https://script.google.com/macros/s/AKfycbzEGXW1yY1gfjpINNdp7KVbzWEe6o1-LAonA4c6kjTeYLpc1oybwv1yV1V6A82oti6e/exec",{
 
-localStorage.setItem("drivers",JSON.stringify(stored));
+method:"POST",
 
-alert("Application Submitted");
+body:JSON.stringify(data)
+
+})
+
+.then(res=>alert("Application Submitted Successfully"))
+
+.catch(err=>alert("Error submitting form"));
 
 }
 
