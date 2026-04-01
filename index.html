@@ -111,7 +111,7 @@ S-Drive
 
 <div class="hero">
 
-<h1>Hire Professional Drivers</h1>
+<h1>Hiring Drivers</h1>
 
 <p>Rental | Salary </p>
 
@@ -133,11 +133,7 @@ S-Drive
 
 <input id="phone" placeholder="Phone Number" required>
 
-<select id="city" ponchange="showDetails(this.value)" required>
-
-<option value="">Select Area</option>
-
-<option value="rental">Bangalore</option>
+<input id="city" placeholder="City" required>
 
 <select id="type" onchange="showDetails(this.value)" required>
 
@@ -146,7 +142,6 @@ S-Drive
 <option value="rental">Rental</option>
 
 <option value="salary">Salary</option>
-
 
 </select>
 
@@ -242,8 +237,6 @@ function showDetails(type){
 document.getElementById("rental").style.display="none";
 
 document.getElementById("salary").style.display="none";
-
-document.getElementById("uber").style.display="none";
 
 document.getElementById(type).style.display="block";
 
