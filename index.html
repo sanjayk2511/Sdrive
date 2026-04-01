@@ -41,23 +41,80 @@ font-size:18px;
 color:#444;
 }
 
-/* Button */
+<div class="hero">
 
-.btn{
-background:#ff6a00;
-color:white;
-padding:14px 28px;
-border:none;
-border-radius:8px;
-font-size:18px;
-cursor:pointer;
-margin-top:20px;
+<h1>Professional Drivers for Fleet</h1>
+
+<p>Rental | Salary | Uber Fleet</p>
+
+<button class="btn" onclick="showSection()">Apply Now</button>
+
+</div>
+
+
+<div class="section" id="driverSection" style="display:none;">
+
+<h2>Select Driver Type</h2>
+
+<div class="services">
+
+<div class="card" onclick="showDetails('rental')">
+Rental Drivers
+</div>
+
+<div class="card" onclick="showDetails('salary')">
+Salary Drivers
+</div>
+
+<div class="card" onclick="showDetails('uber')">
+Uber Fleet
+</div>
+
+</div>
+
+</div>
+
+
+<div id="rental" class="section" style="display:none;">
+<h2>Rental Driver Details</h2>
+
+<p>Rent per day: ₹500</p>
+<p>Documents required: 
+  Original Driving License.
+  Aadhar Card. </p>
+
+
+</div>
+
+
+<div id="salary" class="section" style="display:none;">
+<h2>Salary Driver Details</h2>
+
+<p>Monthly salary: ₹25000 - ₹30000</p>
+<p>Documents required: 
+  Original Driving License.
+  Aadhar Card. </p>
+</div>
+
+
+
+
+
+<script>
+
+function showSection(){
+document.getElementById("driverSection").style.display="block";
 }
 
-.btn:hover{
-background:#e65c00;
+function showDetails(type){
+
+document.getElementById("rental").style.display="none";
+document.getElementById("salary").style.display="none";
+document.getElementById(type).style.display="block";
+
 }
 
+</script>
 /* Sections */
 
 .section{
