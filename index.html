@@ -201,29 +201,15 @@ e.preventDefault();
 
 var data={
 
-name:document.getElementById("name").value,
+name:name.value,
 
-phone:document.getElementById("phone").value,
+phone:phone.value,
 
-city:document.getElementById("city").value,
+city:city.value,
 
-type:document.getElementById("type").value
+type:type.value
 
 };
-
-fetch(scriptURL,{
-
-method:"POST",
-
-body:JSON.stringify(data)
-
-})
-
-.then(res=>alert("Application Submitted"))
-
-.catch(err=>alert("Error"));
-
-}
 
 fetch(scriptURL,{
 
