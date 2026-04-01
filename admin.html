@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+<title>S-Drive Admin</title>
+
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<style>
+
+body{
+font-family:Segoe UI;
+background:#0f172a;
+color:white;
+margin:0;
+}
+
+.login{
+text-align:center;
+margin-top:120px;
+}
+
+input{
+padding:12px;
+margin:8px;
+border-radius:6px;
+border:none;
+}
+
+button{
+padding:10px 20px;
+background:#2563eb;
+color:white;
+border:none;
+border-radius:6px;
+cursor:pointer;
+}
+
+table{
+width:95%;
+margin:20px auto;
+border-collapse:collapse;
+background:white;
+color:black;
+}
+
+th,td{
+padding:12px;
+border:1px solid #ddd;
+text-align:center;
+}
+
+th{
+background:#2563eb;
+color:white;
+}
+
+</style>
+
+</head>
+
+<body>
+
+
+
+<div class="login" id="loginBox">
+
+<h2>Admin Login</h2>
+
+<input type="password" id="password" placeholder="Password">
+
+<br>
+
+<button onclick="login()">Login</button>
+
+</div>
+
+
+
+<div id="panel" style="display:none;">
+
+<h2 style="text-align:center;">Driver Applications</h2>
+
+<input placeholder="Search phone" onkeyup="search(this.value)">
+
+<table id="table">
+
+<tr>
+
+<th>Name</th>
+
+<th>Phone</th>
+
+<th>City</th>
+
+<th>Type</th>
+
+<th>Status</th>
+
+<th>Action</th>
+
+</tr>
+
+</table>
+
+</div>
+
+
+
+<script>
+
+const scriptURL="PASTE_WEB_APP_URL";
+
+const adminPassword="1234";
+
+var allData=[];
+
+
+
+function login(){
+
+if(password.value==adminPassword){
+
+loginBox.style.display="none";
+
+panel.style.display="block";
+
+loadData();
+
+}
+
+else{
+
+alert("Wrong password");
+
+}
+
+}
+
+
+
+function loadData(){
+
+fetch(scriptURL)
+
+.then(res=>res.json())
+
+.then(data=>{
+
+allData=data;
+
+render(data);
+
+});
+
+}
+
+
+
+function render(data){
+
+table.innerHTML=`
+
+<tr>
+
+<th>Name</th>
+
+<th>Phone</th>
+
+<th>City</th>
+
+<th>Type</th>
+
+<th>Status</th>
+
+<th>Action</th>
+
+</tr>`;
+
+data.forEach(d=>{
+
+table.innerHTML+=`
+
+<tr>
+
+<td>${d[0]}</td>
+
+<td>${d[1]}</td>
+
+<td>${d[2]}</td>
+
+<td>${d[3]}</td>
+
+<td>
+
+<select onchange="updateStatus('${d[1]}',this.value)">
+
+<option ${d[4]=="Pending"?"selected":""}>Pending</option>
+
+<option ${d[4]=="Selected"?"selected":""}>Selected</option>
+
+<option ${d[4]=="Rejected"?"selected":""}>Rejected</option>
+
+</select>
+
+</td>
+
+<td>
+
+<button onclick="deleteDriver('${d[1]}')">Delete</button>
+
+</td>
+
+</tr>`;
+
+});
+
+}
+
+
+
+function search(val){
+
+render(allData.filter(d=>d[1].includes(val)));
+
+}
+
+
+
+function updateStatus(phone,status){
+
+fetch(scriptURL,{
+
+method:"PUT",
+
+body:JSON.stringify({phone,status})
+
+});
+
+}
+
+
+
+function deleteDriver(phone){
+
+fetch(scriptURL,{
+
+method:"DELETE",
+
+body:JSON.stringify({phone})
+
+})
+
+.then(()=>loadData());
+
+}
+
+</script>
+
+</body>
+
+</html>
