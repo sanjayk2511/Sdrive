@@ -265,17 +265,19 @@ reader.onload=function(){
 
 var data={
 
-name:name.value,
+name:document.getElementById("name").value,
 
-phone:phone.value,
+phone:document.getElementById("phone").value,
 
-city:city.value,
+city:document.getElementById("city").value,
 
-type:type.value,
+type:document.getElementById("type").value,
 
 file:reader.result.split(",")[1],
 
-filename:file.name
+fileName:file.name,
+
+fileType:file.type
 
 };
 
@@ -287,13 +289,11 @@ body:JSON.stringify(data)
 
 })
 
-.then(res=>alert("Application Submitted"))
+.then(res=>alert("Application Submitted Successfully"))
+
+.catch(err=>alert("Upload failed"));
 
 };
-
-reader.readAsDataURL(file);
-
-}
 
 </script>
 
