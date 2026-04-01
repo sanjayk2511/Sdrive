@@ -179,9 +179,9 @@ S-Drive
 
 <div class="hero">
 
-<h1>Urgently Hiring Drivers for Fleet</h1>
+<h1>Professional Drivers for Fleet</h1>
 
-<p>Rental | Salary </p>
+<p>Rental | Salary | Uber Fleet</p>
 
 <button class="btn" onclick="showForm()">Apply Now</button>
 
@@ -211,6 +211,8 @@ S-Drive
 
 <option value="salary">Salary Driver</option>
 
+<option value="uber">Uber Fleet Driver</option>
+
 </select>
 
 <label>Upload Driving License</label>
@@ -229,16 +231,21 @@ S-Drive
 
 <div class="card" onclick="showDetails('rental')">
 
-Rental Base
+Rental Drivers
 
 </div>
 
 <div class="card" onclick="showDetails('salary')">
 
-Salary Base
+Salary Drivers
 
 </div>
 
+<div class="card" onclick="showDetails('uber')">
+
+Uber Fleet
+
+</div>
 
 </div>
 
@@ -246,7 +253,7 @@ Salary Base
 
 <div id="rental" class="details" style="display:none;">
 
-<h3>Rental Base</h3>
+<h3>Rental Driver</h3>
 
 <ul>
 
@@ -266,15 +273,13 @@ Salary Base
 
 <div id="salary" class="details" style="display:none;">
 
-<h3>Salary Base</h3>
+<h3>Salary Driver</h3>
 
 <ul>
 
-<li>Fixed Monthly salary</li>
+<li>Monthly salary</li>
 
 <li>Full time job</li>
-
-<li>Incentives are provided</li>
 
 <li>Immediate joining</li>
 
@@ -283,6 +288,22 @@ Salary Base
 </div>
 
 
+
+<div id="uber" class="details" style="display:none;">
+
+<h3>Uber Fleet Driver</h3>
+
+<ul>
+
+<li>Uber account needed</li>
+
+<li>Daily earning model</li>
+
+<li>Flexible shift</li>
+
+</ul>
+
+</div>
 
 
 
@@ -337,6 +358,8 @@ function showDetails(type){
 document.getElementById("rental").style.display="none";
 
 document.getElementById("salary").style.display="none";
+
+document.getElementById("uber").style.display="none";
 
 if(type){
 
