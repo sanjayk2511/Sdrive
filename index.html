@@ -113,7 +113,7 @@ S-Drive
 
 <h1>Hire Professional Drivers</h1>
 
-<p>Rental | Salary | Uber Fleet</p>
+<p>Rental | Salary </p>
 
 <button class="btn" onclick="showForm()">Apply Now</button>
 
@@ -133,7 +133,11 @@ S-Drive
 
 <input id="phone" placeholder="Phone Number" required>
 
-<input id="city" placeholder="City" required>
+<select id="city" ponchange="showDetails(this.value)" required>
+
+<option value="">Select Area</option>
+
+<option value="rental">Bangalore</option>
 
 <select id="type" onchange="showDetails(this.value)" required>
 
@@ -143,7 +147,6 @@ S-Drive
 
 <option value="salary">Salary</option>
 
-<option value="uber">Uber</option>
 
 </select>
 
@@ -171,13 +174,6 @@ Salary driver fixed monthly income
 
 </div>
 
-
-
-<div id="uber" class="details" style="display:none;">
-
-Uber fleet driver earning model
-
-</div>
 
 
 
@@ -211,7 +207,7 @@ WhatsApp
 
 <script>
 
-const scriptURL="https://script.google.com/macros/s/AKfycbynZw4PGrX6PFaBf9y6S0a98r_0dcGpEHv4TSscofv7PbU2i9IQufNfxRcN39YAaNkl/exec";
+const scriptURL="https://script.google.com/macros/s/AKfycbz918PFOH5qMmEXEDbo6_Tl1FBGZFQnLaMYEDmjkLvCrmcECu3IqQ1i3hKDXCKLSQd4/exec";
 
 function showForm(){
 
@@ -265,19 +261,17 @@ reader.onload=function(){
 
 var data={
 
-name:document.getElementById("name").value,
+name:name.value,
 
-phone:document.getElementById("phone").value,
+phone:phone.value,
 
-city:document.getElementById("city").value,
+city:city.value,
 
-type:document.getElementById("type").value,
+type:type.value,
 
 file:reader.result.split(",")[1],
 
-fileName:file.name,
-
-fileType:file.type
+filename:file.name
 
 };
 
@@ -289,11 +283,13 @@ body:JSON.stringify(data)
 
 })
 
-.then(res=>alert("Application Submitted Successfully"))
-
-.catch(err=>alert("Upload failed"));
+.then(res=>alert("Application Submitted"))
 
 };
+
+reader.readAsDataURL(file);
+
+}
 
 </script>
 
