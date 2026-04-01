@@ -181,7 +181,7 @@ S-Drive
 
 <h1>Professional Drivers for Fleet</h1>
 
-<p>Rental | Salary | Uber Fleet</p>
+<p>Rental | Salary </p>
 
 <button class="btn" onclick="showForm()">Apply Now</button>
 
@@ -230,13 +230,13 @@ S-Drive
 
 <div class="card" onclick="showDetails('rental')">
 
-Rental Drivers
+Rental Base
 
 </div>
 
 <div class="card" onclick="showDetails('salary')">
 
-Salary Drivers
+Salary Base
 
 </div>
 
@@ -247,7 +247,7 @@ Salary Drivers
 
 <div id="rental" class="details" style="display:none;">
 
-<h3>Rental Driver</h3>
+<h3>Rental Base</h3>
 
 <ul>
 
@@ -267,7 +267,7 @@ Salary Drivers
 
 <div id="salary" class="details" style="display:none;">
 
-<h3>Salary Driver</h3>
+<h3>Salary Base</h3>
 
 <ul>
 
@@ -281,23 +281,6 @@ Salary Drivers
 
 </div>
 
-
-
-<div id="uber" class="details" style="display:none;">
-
-<h3>Uber Fleet Driver</h3>
-
-<ul>
-
-<li>Uber account needed</li>
-
-<li>Daily earning model</li>
-
-<li>Flexible shift</li>
-
-</ul>
-
-</div>
 
 
 
@@ -391,10 +374,9 @@ body:JSON.stringify(data)
 
 .then(res=>alert("Application Submitted Successfully"))
 
-.catch(err=>alert("Error submitting form"));
+.catch(err=>alert("Error"));
 
 }
-
 
 
 function showAdmin(){
