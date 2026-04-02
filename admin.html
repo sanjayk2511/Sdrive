@@ -98,7 +98,7 @@ color:white;
 
 <th>Status</th>
 
-<th>Action</th>
+<th>Delete</th>
 
 </tr>
 
@@ -110,7 +110,7 @@ color:white;
 
 <script>
 
-const scriptURL="https://script.google.com/macros/s/AKfycbxPp1_jbUSgsZsSl4qwCdbQLMBGfbsjxuJCgxJj9aGKaT1M89Tr7QkJHRIP8qNAn3r6mg/exec";
+const scriptURL="PASTE_WEB_APP_URL";
 
 const adminPassword="1234";
 
@@ -120,11 +120,11 @@ var allData=[];
 
 function login(){
 
-if(password.value==adminPassword){
+if(document.getElementById("password").value==adminPassword){
 
-loginBox.style.display="none";
+document.getElementById("loginBox").style.display="none";
 
-panel.style.display="block";
+document.getElementById("panel").style.display="block";
 
 loadData();
 
@@ -132,7 +132,7 @@ loadData();
 
 else{
 
-alert("Wrong password");
+alert("Wrong Password");
 
 }
 
@@ -174,7 +174,7 @@ table.innerHTML=`
 
 <th>Status</th>
 
-<th>Action</th>
+<th>Delete</th>
 
 </tr>`;
 
