@@ -20,7 +20,7 @@ color:white;
 background:linear-gradient(90deg,#2563eb,#4f46e5);
 padding:18px;
 text-align:center;
-font-size:26px;
+font-size:28px;
 font-weight:bold;
 }
 
@@ -34,10 +34,10 @@ background:linear-gradient(90deg,#f97316,#fb923c);
 border:none;
 padding:14px 28px;
 border-radius:8px;
-color:white;
 font-size:18px;
 cursor:pointer;
 margin-top:20px;
+color:white;
 }
 
 .section{
@@ -77,6 +77,13 @@ padding:15px;
 border-radius:50px;
 color:white;
 text-decoration:none;
+}
+
+.footer{
+text-align:center;
+padding:20px;
+background:black;
+margin-top:40px;
 }
 
 </style>
@@ -119,7 +126,7 @@ S-Drive
 
 <select id="type" onchange="showDetails(this.value)" required>
 
-<option value="">Driver Type</option>
+<option value="">Select Driver Type</option>
 
 <option value="Rental">Rental</option>
 
@@ -138,40 +145,38 @@ S-Drive
 
 
 <div id="Rental" class="details" style="display:none;">
-
 Rental driver flexible earning model
-
 </div>
-
-
 
 <div id="Salary" class="details" style="display:none;">
-
 Salary driver fixed monthly income
-
 </div>
 
-
-
 <div id="Uber" class="details" style="display:none;">
-
 Uber fleet driver earning model
-
 </div>
 
 
 
 <a class="whatsapp" href="https://wa.me/917019300551">
 
-WhatsApp
+WhatsApp Apply
 
 </a>
 
 
 
+<div class="footer">
+
+© S-Drive Driver Services
+
+</div>
+
+
+
 <script>
 
-const scriptURL="https://script.google.com/macros/s/AKfycbxPp1_jbUSgsZsSl4qwCdbQLMBGfbsjxuJCgxJj9aGKaT1M89Tr7QkJHRIP8qNAn3r6mg/exec";
+const scriptURL="https://script.google.com/macros/s/AKfycbyeQb9fngVm7yaaiyKgvfC6nl4eAOQNuZNFFoxXCVpjUGaught3VedlEDeCiZ3hXZDgOw/exec";
 
 function showForm(){
 
@@ -189,7 +194,11 @@ document.getElementById("Salary").style.display="none";
 
 document.getElementById("Uber").style.display="none";
 
+if(type){
+
 document.getElementById(type).style.display="block";
+
+}
 
 }
 
@@ -201,13 +210,13 @@ e.preventDefault();
 
 var data={
 
-name:name.value,
+name:document.getElementById("name").value,
 
-phone:phone.value,
+phone:document.getElementById("phone").value,
 
-city:city.value,
+city:document.getElementById("city").value,
 
-type:type.value
+type:document.getElementById("type").value
 
 };
 
@@ -219,7 +228,9 @@ body:JSON.stringify(data)
 
 })
 
-.then(res=>alert("Application Submitted"));
+.then(res=>alert("Application Submitted Successfully"))
+
+.catch(err=>alert("Error"));
 
 }
 
