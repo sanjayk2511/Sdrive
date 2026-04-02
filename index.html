@@ -118,7 +118,7 @@ margin-top:40px;
 
 <div class="logo">
 
-<img src="logo.png">
+<img src="logo1.png">
 
 </div>
 
@@ -132,7 +132,7 @@ margin-top:40px;
 
 <h1>Drive with S-Drive</h1>
 
-<p>Rental • Salary • Uber</p>
+<p>Rental • Salary </p>
 
 <button class="btn" onclick="showForm()">Apply Now</button>
 
@@ -144,9 +144,13 @@ margin-top:40px;
 
 <div class="card" onclick="showDetails('Rental')">
 
-<h3>Rental Driver</h3>
+<h3>Rental Base</h3>
 
 <p>Flexible earnings</p>
+
+<p>Accomadation Provided</p>
+
+<p>Earn upto 40000 per month</p>
 
 </div>
 
@@ -154,21 +158,16 @@ margin-top:40px;
 
 <div class="card" onclick="showDetails('Salary')">
 
-<h3>Salary Driver</h3>
+<h3>Salary Base</h3>
 
 <p>Fixed income</p>
 
-</div>
+<p>Spot Incentives</p>
 
-
-
-<div class="card" onclick="showDetails('Uber')">
-
-<h3>Uber Fleet</h3>
-
-<p>Company car trips</p>
+<p>Accomadation provided</p>
 
 </div>
+
 
 </div>
 
@@ -176,7 +175,7 @@ margin-top:40px;
 
 <div id="Rental" class="details">
 
-Daily rental plan with high earning chance
+Daily rental plan with high earning chance.
 
 </div>
 
@@ -184,17 +183,11 @@ Daily rental plan with high earning chance
 
 <div id="Salary" class="details">
 
-Monthly salary stable job
+Monthly salary stable job.
 
 </div>
 
 
-
-<div id="Uber" class="details">
-
-Uber fleet driver opportunity
-
-</div>
 
 
 
@@ -206,7 +199,11 @@ Uber fleet driver opportunity
 
 <input id="phone" placeholder="Phone Number" required>
 
-<input id="city" placeholder="City" required>
+<select id="city" required>
+
+<option value="">Select City</option>
+
+<option>Bangalore</option>
 
 <select id="type" required>
 
@@ -215,8 +212,6 @@ Uber fleet driver opportunity
 <option>Rental</option>
 
 <option>Salary</option>
-
-<option>Uber</option>
 
 </select>
 
@@ -271,8 +266,6 @@ function showDetails(type){
 document.getElementById("Rental").style.display="none";
 
 document.getElementById("Salary").style.display="none";
-
-document.getElementById("Uber").style.display="none";
 
 document.getElementById(type).style.display="block";
 
