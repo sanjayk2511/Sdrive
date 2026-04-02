@@ -3,68 +3,88 @@
 
 <head>
 
-<title>S-Drive Drivers</title>
+<title>S-Drive Fleet</title>
 
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
 <style>
 
 body{
-font-family:Segoe UI;
 margin:0;
-background:linear-gradient(120deg,#0f172a,#1e293b);
+font-family:Poppins;
+background:#0f172a;
 color:white;
 }
 
-.header{
-background:linear-gradient(90deg,#2563eb,#4f46e5);
-padding:18px;
-text-align:center;
-font-size:28px;
-font-weight:bold;
+header{
+display:flex;
+justify-content:space-between;
+align-items:center;
+padding:15px 30px;
+background:#020617;
+}
+
+.logo img{
+height:45px;
 }
 
 .hero{
 text-align:center;
 padding:80px 20px;
+background:linear-gradient(120deg,#0B5FFF,#FF7A00);
 }
 
 .btn{
-background:linear-gradient(90deg,#f97316,#fb923c);
+background:#FF7A00;
+padding:14px 26px;
 border:none;
-padding:14px 28px;
 border-radius:8px;
-font-size:18px;
-cursor:pointer;
-margin-top:20px;
 color:white;
+cursor:pointer;
 }
 
-.section{
+.cards{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+gap:20px;
 padding:40px;
-text-align:center;
+}
+
+.card{
+background:white;
+color:black;
+padding:25px;
+border-radius:12px;
+cursor:pointer;
+transition:.3s;
+}
+
+.card:hover{
+transform:scale(1.05);
 }
 
 form{
-max-width:420px;
-margin:auto;
 display:flex;
 flex-direction:column;
-gap:15px;
+gap:12px;
+max-width:420px;
+margin:auto;
+padding:20px;
 }
 
 input,select{
 padding:12px;
-border-radius:8px;
+border-radius:6px;
 border:none;
 }
 
 .details{
+display:none;
 background:white;
 color:black;
-padding:20px;
-margin:20px auto;
 max-width:500px;
+margin:20px auto;
+padding:20px;
 border-radius:10px;
 }
 
@@ -73,16 +93,16 @@ position:fixed;
 bottom:20px;
 right:20px;
 background:#25D366;
-padding:15px;
+padding:15px 18px;
 border-radius:50px;
 color:white;
 text-decoration:none;
 }
 
-.footer{
+footer{
+background:black;
 text-align:center;
 padding:20px;
-background:black;
 margin-top:40px;
 }
 
@@ -92,19 +112,27 @@ margin-top:40px;
 
 <body>
 
-<div class="header">
 
-S-Drive
+
+<header>
+
+<div class="logo">
+
+<img src="logo.png">
 
 </div>
+
+<div>S-Drive Fleet Services</div>
+
+</header>
 
 
 
 <div class="hero">
 
-<h1>Hire Professional Drivers</h1>
+<h1>Drive with S-Drive</h1>
 
-<p>Rental | Salary | Uber Fleet</p>
+<p>Rental • Salary • Uber</p>
 
 <button class="btn" onclick="showForm()">Apply Now</button>
 
@@ -112,9 +140,65 @@ S-Drive
 
 
 
-<div id="formSection" class="section" style="display:none;">
+<div class="cards">
 
-<h2>Driver Application</h2>
+<div class="card" onclick="showDetails('Rental')">
+
+<h3>Rental Driver</h3>
+
+<p>Flexible earnings</p>
+
+</div>
+
+
+
+<div class="card" onclick="showDetails('Salary')">
+
+<h3>Salary Driver</h3>
+
+<p>Fixed income</p>
+
+</div>
+
+
+
+<div class="card" onclick="showDetails('Uber')">
+
+<h3>Uber Fleet</h3>
+
+<p>Company car trips</p>
+
+</div>
+
+</div>
+
+
+
+<div id="Rental" class="details">
+
+Daily rental plan with high earning chance
+
+</div>
+
+
+
+<div id="Salary" class="details">
+
+Monthly salary stable job
+
+</div>
+
+
+
+<div id="Uber" class="details">
+
+Uber fleet driver opportunity
+
+</div>
+
+
+
+<div id="formSection" style="display:none;">
 
 <form onsubmit="submitForm(event)">
 
@@ -124,36 +208,28 @@ S-Drive
 
 <input id="city" placeholder="City" required>
 
-<select id="type" onchange="showDetails(this.value)" required>
+<select id="type" required>
 
-<option value="">Select Driver Type</option>
+<option value="">Select Type</option>
 
-<option value="Rental">Rental</option>
+<option>Rental</option>
 
-<option value="Salary">Salary</option>
+<option>Salary</option>
 
-<option value="Uber">Uber</option>
+<option>Uber</option>
 
 </select>
+
+
+
+<input type="file" id="photo">
+
+
 
 <button class="btn">Submit</button>
 
 </form>
 
-</div>
-
-
-
-<div id="Rental" class="details" style="display:none;">
-Rental driver flexible earning model
-</div>
-
-<div id="Salary" class="details" style="display:none;">
-Salary driver fixed monthly income
-</div>
-
-<div id="Uber" class="details" style="display:none;">
-Uber fleet driver earning model
 </div>
 
 
@@ -166,21 +242,25 @@ WhatsApp Apply
 
 
 
-<div class="footer">
+<footer>
 
-© S-Drive Driver Services
+© S-Drive
 
-</div>
+</footer>
 
 
 
 <script>
 
-const scriptURL="https://script.google.com/macros/s/AKfycbyeQb9fngVm7yaaiyKgvfC6nl4eAOQNuZNFFoxXCVpjUGaught3VedlEDeCiZ3hXZDgOw/exec";
+const scriptURL="https://script.google.com/macros/s/AKfycbxL9pAhQMp3ULS4z0sCR94DTFdhD_v8_eO3Q0f338IH5TrhbiZvv0wUwi1i-U8TTADszw/exec";
+
+
 
 function showForm(){
 
 document.getElementById("formSection").style.display="block";
+
+window.scrollTo(0,document.body.scrollHeight);
 
 }
 
@@ -194,11 +274,7 @@ document.getElementById("Salary").style.display="none";
 
 document.getElementById("Uber").style.display="none";
 
-if(type){
-
 document.getElementById(type).style.display="block";
-
-}
 
 }
 
@@ -208,6 +284,12 @@ function submitForm(e){
 
 e.preventDefault();
 
+
+
+var file=document.getElementById("photo").files[0];
+
+
+
 var data={
 
 name:document.getElementById("name").value,
@@ -216,9 +298,13 @@ phone:document.getElementById("phone").value,
 
 city:document.getElementById("city").value,
 
-type:document.getElementById("type").value
+type:document.getElementById("type").value,
+
+photo:file?file.name:"No Photo"
 
 };
+
+
 
 fetch(scriptURL,{
 
@@ -228,13 +314,21 @@ body:JSON.stringify(data)
 
 })
 
-.then(res=>alert("Application Submitted Successfully"))
+.then(res=>{
 
-.catch(err=>alert("Error"));
+alert("Application submitted");
+
+document.querySelector("form").reset();
+
+})
+
+.catch(err=>alert("error"));
 
 }
 
 </script>
+
+
 
 </body>
 
